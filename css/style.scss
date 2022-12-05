@@ -1,6 +1,7 @@
 
 
 $header_color: #03045ebb;
+$dark_color: #03045e;
 $secondary_color: #ade8f4;
 $wrapper_color: darkgrey;
 
@@ -169,6 +170,10 @@ html{
     background-color:#00b4d898;
     color: white;
 }
+#player, #pc{
+    margin: 0px auto 16px auto;
+    border: $dark_color solid 2px;
+}
 
 
 .found, .error {
@@ -281,8 +286,14 @@ html{
     align-items: center;
 }
 
-
-
+.dice_hand{
+    display: flex;
+    flex-direction: row;
+    img{
+        max-width: 40%;
+        height: auto;
+    }
+}
 
 
 
@@ -495,10 +506,24 @@ article img{
 
 @media (min-width: 600px){
 
+
+    #game{
+        display: flex;
+        flex-direction: row;
+
+        #player{
+            margin-right: 8px;
+        }
+
+        #pc{
+            margin-left: 8px;
+        }
+    }
     /* article img{
         max-width: 45%;
         height: auto;
     } */
+
 
     .btn-menu{
         display: none;

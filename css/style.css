@@ -155,6 +155,11 @@ html {
   color: white;
 }
 
+#player, #pc {
+  margin: 0px auto 16px auto;
+  border: #03045e solid 2px;
+}
+
 .found, .error {
   border: 1px solid #03045e;
   padding: 8px;
@@ -255,6 +260,15 @@ html {
   display: flex;
   justify-content: space-around;
   align-items: center;
+}
+
+.dice_hand {
+  display: flex;
+  flex-direction: row;
+}
+.dice_hand img {
+  max-width: 40%;
+  height: auto;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -455,6 +469,16 @@ article img {
     }
 } */
 @media (min-width: 600px) {
+  #game {
+    display: flex;
+    flex-direction: row;
+  }
+  #game #player {
+    margin-right: 8px;
+  }
+  #game #pc {
+    margin-left: 8px;
+  }
   /* article img{
       max-width: 45%;
       height: auto;
