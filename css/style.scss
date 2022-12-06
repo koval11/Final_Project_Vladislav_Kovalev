@@ -109,7 +109,25 @@ html{
 	background-color: #03055e6f;    
 	font-size:.85em;
 }
-#pop-up div, #pop-up_2 div{
+#pop-up div{
+	/* vertically/horizontally center this element*/
+	position:absolute;
+	left:50%;
+	top:50%;
+	transform:translate(-50%, -50%);
+
+	/* basic box model stuff*/
+	max-width:400px;
+	min-width:300px;
+	padding:10px;
+	border-radius:10px;
+	box-shadow: 0 0 0 2px #9495f8,
+		        0 0 0 4px #3d3eaa, 
+				0 0 0 8px #0c0d6e;;
+	background-color: #d7f8ff;
+	color: black;
+}
+#pop-up_2 div{
 	/* vertically/horizontally center this element*/
 	position:absolute;
 	left:50%;
@@ -170,7 +188,7 @@ html{
     background-color:#00b4d898;
     color: white;
 }
-#player, #pc{
+#player_article, #pc_article{
     margin: 0px auto 16px auto;
     border: $dark_color solid 2px;
 }
@@ -179,6 +197,17 @@ html{
     margin: 0px;
     padding: 0px;
 }
+
+#round_h2, #round_h3{
+    
+  
+    text-align: center;
+}
+
+
+
+
+
 
 .found, .error {
     border: 1px solid #03045e;
@@ -315,7 +344,8 @@ body{
 
 header{
    
-    background-image: url('../images/bcit.jpg');
+    background-image: url('../images/header.jpg');
+    height: 100px;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -518,11 +548,11 @@ article img{
         display: flex;
         flex-direction: row;
 
-        #player{
+        #player_article{
             margin-right: 8px;
         }
 
-        #pc{
+        #pc_article{
             margin-left: 8px;
         }
     }

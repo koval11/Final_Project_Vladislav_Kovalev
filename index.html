@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="css/style.css">
     <meta name="viewport" content="initial-scale=1.0, width=device-width">
-    <script src="scripts/menu.js" defer="defer"></script>
+    <!-- <script src="scripts/menu.js" defer="defer"></script> -->
     <script src="scripts/project_objects.js" defer="defer"></script>
     <script src="scripts/project_functions.js" defer="defer"></script>
     <script src="scripts/project_code.js" defer="defer"></script>
@@ -15,12 +15,12 @@
     <div id="wrapper">
         <header>
             <div id="header_top">
-                <button class="btn-menu">Menu</button>
-                <h1>Home</h1>
+                <!-- <button class="btn-menu">Menu</button> -->
+                <h1>Final Project</h1>
             </div>
 
             
-            <nav>
+            <!-- <nav>
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="index.html">Fake 1</a></li>
@@ -28,15 +28,15 @@
                     <li><a href="index.html">Fake 3</a></li>
                     
                 </ul>
-            </nav>
+            </nav> -->
             
         </header>
         
         <main>
             <section>
-                <h2>Game</h2>
+                <h2>Dice of the Fates</h2>
                 <div id="game">
-                    <article id="player">
+                    <article id="player_article">
                         <h3 id="player_h3">Player</h3>
                         <div class="dice_hand">
                             <img id="dice_one" src="images/dice/1.png" alt="dice_face">
@@ -46,7 +46,7 @@
                         <p id="total_score_1">Total:</p>
                         
                     </article>
-                    <article id="pc">
+                    <article id="pc_article">
                         <h3 id="ai_h3">AI</h3>
                         <div class="dice_hand">
                             <img id="dice_three" src="images/dice/1.png" alt="dice_face">
@@ -115,6 +115,7 @@
                 <div>
                     <button id="close-pop-up">&#x2715;</button>
                     <h2 id="round_h2"></h2>
+                    <h2 id="round_h3"><span id="color1"></span> - <span id="color2"></span></h2>
                     <img id="round_img" src="" alt="winner_gif">
                 </div>
                     
