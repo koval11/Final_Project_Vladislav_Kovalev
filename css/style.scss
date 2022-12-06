@@ -30,7 +30,7 @@ html{
 #wrapper{
     max-width: 1000px;
     margin: auto;
-    background-image: linear-gradient(to right, rgb(19, 71, 245,0.95), rgb(191, 3, 3,0.95));
+    background-image: linear-gradient(to right, rgb(19, 71, 245,0.6), rgb(191, 3, 3,0.6));
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -94,7 +94,7 @@ html{
 
 
 
-#pop-up{
+#pop-up, #pop-up_2{
 	/* remove this popup from normal page flow */
     display: none;
     position:fixed;
@@ -109,7 +109,7 @@ html{
 	background-color: #03055e6f;    
 	font-size:.85em;
 }
-#pop-up div{
+#pop-up div, #pop-up_2 div{
 	/* vertically/horizontally center this element*/
 	position:absolute;
 	left:50%;
@@ -175,6 +175,10 @@ html{
     border: $dark_color solid 2px;
 }
 
+#round_img{
+    margin: 0px;
+    padding: 0px;
+}
 
 .found, .error {
     border: 1px solid #03045e;

@@ -13,11 +13,13 @@ class Dice{
 }
 
 class Player{
-    constructor(){
+    constructor(side, userName){
         this.diceOne = new Dice();
         this.diceTwo = new Dice();
         this.total = 0;
         this.round = 0;
+        this.userName = userName;
+        this.side = side;
     }
     play(){
         this.diceOne.roll();
@@ -47,6 +49,14 @@ class Player{
 
     showTotal(){
         return this.total;
+    }
+
+    showUserName(){
+        return this.userName;
+    }
+
+    showSide(){
+        return this.side;
     }
 }
 
