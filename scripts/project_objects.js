@@ -16,8 +16,18 @@ class Player{
         this.total = 0;
         this.round = 0;
     }
-    roll(){
+    play(){
         this.diceOne.roll();
         this.diceTwo.roll();
+        this.round = this.diceOne + this.diceTwo;
+        this.total += this.round;
+    }
+
+    showRound(){
+        return this.round;
+    }
+    showTotal(){
+        return this.round;
     }
 }
+
