@@ -30,7 +30,7 @@ html{
 #wrapper{
     max-width: 1000px;
     margin: auto;
-    background-color: #ade8f4;
+    background-image: linear-gradient(to right, rgb(19, 71, 245,0.95), rgb(191, 3, 3,0.95));
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -303,7 +303,10 @@ h1,h2,h3,h4,h5,h6{
 
 body{
     margin: 0;
-    background-color: #00b4d8;
+    background-image: url("../images/background_jedi.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size:cover; 
 }
 
 header{

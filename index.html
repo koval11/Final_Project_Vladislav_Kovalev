@@ -11,7 +11,7 @@
     <script src="scripts/project_code.js" defer="defer"></script>
     <script src="https://kit.fontawesome.com/460b85e37b.js" crossorigin="anonymous"></script>
 </head>
-<body>
+<body id="body">
     <div id="wrapper">
         <header>
             <div id="header_top">
@@ -37,20 +37,20 @@
                 <h2>Game</h2>
                 <div id="game">
                     <article id="player">
-                        <h3>Player 1</h3>
+                        <h3 id="player_h3">Player</h3>
                         <div class="dice_hand">
-                            <img src="images/dice/1.png" alt="dice_face">
-                            <img src="images/dice/1.png" alt="dice_face">
+                            <img id="dice_one" src="images/dice/1.png" alt="dice_face">
+                            <img id="dice_two" src="images/dice/1.png" alt="dice_face">
                         </div>
                         <p id="round_score_1">Round:</p>
                         <p id="total_score_1">Total:</p>
                         
                     </article>
                     <article id="pc">
-                        <h3>PC</h3>
+                        <h3 id="ai_h3">AI</h3>
                         <div class="dice_hand">
-                            <img src="images/dice/1.png" alt="dice_face">
-                            <img src="images/dice/1.png" alt="dice_face">
+                            <img id="dice_three" src="images/dice/1.png" alt="dice_face">
+                            <img id="dice_four" src="images/dice/1.png" alt="dice_face">
                         </div>
                         <p id="round_score_2">Round:</p>
                         <p id="total_score_2">Total:</p>
@@ -58,10 +58,58 @@
                 </div>
                 <div>
                     <button id="btn_new_game">New Game</button>
-                    <button id="btn_roll">Roll</button>
+                    <button id="btn_roll" disabled>Roll</button>
                 </div>
                 
             </section>
+
+            <section id='pop-up'>
+                
+                <div>
+                
+                    <form 	action="#" method="post" id="the_form">
+            
+                
+                    <fieldset>
+                        
+                        <label	for="name">Name:</label>
+                        <input 	type="text"	
+                                name="name" 
+                                id="name" >
+                        
+                    </fieldset>
+
+                    <fieldset>
+
+                        <legend><strong>Side </strong><span id="span_1">Jedi</span></legend>
+
+                        
+                            <input type="radio" id="jedi" name="side" value="jedi" checked ="checked">	
+                            <label for="jedi">Jedi</label>
+                        
+                            <input type="radio" id="sith" name="side" value="sith">	
+                            <label for="sith">Sith</label>
+                        
+                                
+                                                        
+                    </fieldset>
+
+                    <!-- <fieldset>
+                        <button id="fake_submit" >Input Name</button>
+                    </fieldset>     -->
+                    
+                    <fieldset>
+                        <input type="submit" value="Input Name" id="submit">
+                    </fieldset>
+                
+                    </form>
+
+                    
+
+                </div>
+                    
+               
+            </section> 
             
         </main>
 
