@@ -21,7 +21,7 @@ html {
 #wrapper {
   max-width: 1000px;
   margin: auto;
-  background-image: linear-gradient(to right, rgba(19, 71, 245, 0.6), rgba(191, 3, 3, 0.6));
+  background-image: linear-gradient(to right, rgba(19, 71, 245, 0.6), rgb(191, 3, 3));
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -35,48 +35,13 @@ html {
   color: #caf0f8;
 }
 
-/* #p_06, #p_07{
-    background-color: #d7f8ff;
-    border: 1px solid rgb(245, 115, 115);
-} */
-#name_found {
-  background-color: greenyellow;
-}
-
-#last_section {
-  border: none;
-}
-
 #the_form {
-  border: #03045e 3px solid;
-  background-color: #00d9ff;
+  background: none;
   padding: 16px;
   display: grid;
   grid-template-columns: auto;
   grid-template-rows: auto auto auto auto;
   grid-gap: 16px;
-}
-
-#div_1, #div_2, #div_3, #div_4, #div_5 {
-  padding: 8px;
-  margin: 8px 0px 8px 0px;
-  border: 2px solid red;
-  background-color: white;
-  color: red;
-}
-
-#quantity_div {
-  display: flex;
-}
-
-#quantity {
-  max-width: 25%;
-  flex: 1;
-}
-
-#quantity_lable {
-  padding-right: 5px;
-  flex: 1;
 }
 
 #pop-up, #pop-up_2 {
@@ -106,9 +71,9 @@ html {
   min-width: 300px;
   padding: 10px;
   border-radius: 10px;
-  box-shadow: 0 0 0 2px #9495f8, 0 0 0 4px #3d3eaa, 0 0 0 8px #0c0d6e;
-  background-color: #d7f8ff;
-  color: black;
+  box-shadow: 0 0 0 4px #9495f8, 0 0 0 8px #0c0d6e;
+  background-color: rgba(3, 4, 94, 0.8745098039);
+  color: white;
 }
 
 #pop-up_2 div {
@@ -122,27 +87,18 @@ html {
   min-width: 300px;
   padding: 10px;
   border-radius: 10px;
-  box-shadow: 0 0 0 2px #9495f8, 0 0 0 4px #3d3eaa, 0 0 0 8px #0c0d6e;
-  background-color: #d7f8ff;
+  box-shadow: 0 0 0 4px #3d3eaa, 0 0 0 8px #d7e1ff;
+  background-color: #d7e1ff;
   color: black;
 }
 
-/* the close X button*/
 #close-pop-up {
-  background-color: #b9f0fc;
+  background-color: #d7e1ff;
   color: #3d3eaa;
   border-radius: 50%;
   font-weight: bold;
-  border: solid 3px #0c0d6e;
-  /*
-  make a 'hand' pointer icon appear on mouseover
-  otherwise it will just be the usual mouse cursor arrow
-  */
+  border: solid 3px #3d3eaa;
   cursor: pointer;
-  /*
-  locate this X button in the 
-  top right corner of the popup
-  */
   position: absolute;
   top: -10px;
   right: -10px;
@@ -151,7 +107,7 @@ html {
 #close-pop-up:hover,
 #close-pop-up:focus,
 #close-pop-up:active {
-  background-color: rgb(145, 232, 235);
+  background-color: #3d3eaa;
   color: white;
   transform: scale(1.3);
 }
@@ -166,8 +122,8 @@ html {
   max-width: 100px;
   padding: 8px 0px 8px 0px;
   margin: 16px;
-  border: #03045e solid 1px;
-  background-color: rgba(0, 180, 216, 0.5960784314);
+  border: white solid 1px;
+  background-color: #1a21f6;
   color: white;
 }
 
@@ -176,9 +132,15 @@ html {
   max-width: 100px;
   padding: 8px 0px 8px 0px;
   margin: 16px;
-  border: #03045e solid 1px;
-  background-color: rgba(0, 180, 216, 0.5960784314);
+  border: white solid 1px;
+  background-color: #1a21f6;
   color: white;
+}
+
+#btn_roll:hover, #btn_new_game:hover, #submit:hover {
+  border: white solid 1px;
+  background-color: white;
+  color: #1a21f6;
 }
 
 #btn_roll:disabled {
@@ -194,6 +156,7 @@ html {
 #player_article, #pc_article {
   margin: 0px auto 16px auto;
   border: #03045e solid 2px;
+  color: white;
 }
 
 #round_img {
@@ -203,10 +166,6 @@ html {
 
 #round_h2, #round_h3 {
   text-align: center;
-}
-
-#player_article, #pc_article {
-  color: white;
 }
 
 #game_name {
@@ -222,61 +181,18 @@ html {
   padding: 16px 0px 16px 0px;
 }
 
-.found, .error {
-  border: 1px solid #03045e;
-  padding: 8px;
-}
-
-.found {
-  background-color: rgb(89, 214, 89);
-}
-
-.error {
-  background-color: rgb(225, 22, 22);
-  color: white;
-}
-
-.show {
-  display: block;
-}
-
-.btn-menu {
-  margin: 10px 0px 10px 0px;
-  padding: 0px 10px 0px 10px;
-  background: none;
-  border: none;
-  color: #caf0f8;
-  font-size: 18px;
-  text-transform: uppercase;
-  font-weight: bold;
-  text-align: left;
-  cursor: pointer;
-}
-
-.last_p {
-  margin-bottom: 0px;
-}
-
-.fa-face-smile {
-  color: rgb(0, 134, 9);
-}
-
-.hand {
+#submit_fieldset {
   display: flex;
-  border: 6px solid rgb(127, 55, 16);
-  border-radius: 10px;
-  background-color: green;
-  justify-content: space-around;
-  align-items: center;
-  padding: 10px 5px 10px 5px;
 }
 
-.hand img {
-  max-width: 18%;
-  height: auto;
+#submit {
+  max-width: 60%;
   flex: 1;
-  margin: 0px;
-  padding: 0px;
+  padding: 8px 0px 8px 0px;
+  margin: 16px;
+  border: white solid 1px;
+  background-color: #1a21f6;
+  color: white;
 }
 
 .input-label-group {
@@ -298,30 +214,6 @@ html {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-}
-
-.gallery_1, .gallery_2, .gallery_3 {
-  background-color: white;
-  border: #03045e 2px solid;
-}
-
-.main-slide img {
-  margin: 0px;
-  padding: 0px;
-}
-
-.thumbs img {
-  margin: 0px;
-  padding: 2px;
-  pointer-events: none;
-  max-width: 100%;
-  height: auto;
-}
-
-.thumbs {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
 }
 
 .dice_hand {
@@ -353,10 +245,10 @@ header {
   justify-content: right;
 }
 
-main {
-  flex: 1;
+header h1 {
   margin: 0px;
-  padding: 0px;
+  flex: 1;
+  padding-right: 73px;
 }
 
 h2 {
@@ -365,6 +257,43 @@ h2 {
 
 h3 {
   margin: 0px 0px 16px 0px;
+}
+
+img {
+  padding-right: 18px;
+  margin-top: 16px;
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+main {
+  flex: 1;
+  margin: 0px;
+  padding: 0px;
+}
+
+section {
+  margin: 0px;
+  padding: 0px 16px 16px 16px;
+}
+
+section h2 {
+  margin: 16px 0px 16px 0px;
+}
+
+article {
+  max-width: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  margin: auto;
+  padding: 8px 8px 8px 8px;
+}
+
+article img {
+  max-width: 100%;
+  height: auto;
+  padding: 10px;
+  margin: 0px;
 }
 
 footer {
@@ -387,56 +316,17 @@ footer h4 {
   margin: 16px 16px 8px 16px;
 }
 
-img {
-  padding-right: 18px;
-  margin-top: 16px;
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-header h1 {
-  margin: 0px;
-  flex: 1;
-  padding-right: 73px;
-}
-
-nav {
-  background-color: rgba(0, 150, 199, 0.6666666667);
-  display: none;
-  margin: 0px;
-}
-
-nav ul {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  margin: 0px;
-  padding: 16px 16px 11px 16px;
-  list-style: none;
-  text-align: center;
-}
-
-nav a {
-  display: block;
-  background-color: rgba(3, 4, 94, 0.7333333333);
-  margin: 0px 0px 5px 0px;
-  padding: 8px 0px 8px 0px;
-}
-
-nav a:link {
-  color: #d7f8ff;
+footer a {
   text-decoration: none;
 }
 
-nav a:visited {
-  color: #d7f8ff;
-  text-decoration: none;
+footer a:visited {
+  color: #89aaba;
 }
 
-nav a:hover, a:focus, a:active {
+footer a:hover, a:focus, a:active {
   color: #03045e;
-  background-color: rgba(215, 248, 255, 0.7333333333);
+  background-color: #d7f8ff;
 }
 
 a {
@@ -470,50 +360,6 @@ ol {
   padding-left: 25px;
 }
 
-section {
-  /* display: flex; */
-  /* flex-direction: column; */
-  margin: 0px;
-  padding: 0px 16px 16px 16px;
-}
-
-article {
-  max-width: 100%;
-  display: flex;
-  flex-direction: column;
-  background-color: rgba(0, 0, 0, 0.4);
-  margin: auto;
-  padding: 8px 8px 8px 8px;
-}
-
-section h2 {
-  margin: 16px 0px 16px 0px;
-}
-
-footer a {
-  text-decoration: none;
-}
-
-footer a:visited {
-  color: #89aaba;
-}
-
-li p {
-  margin-left: 10px;
-}
-
-footer a:hover, a:focus, a:active {
-  color: #03045e;
-  background-color: #d7f8ff;
-}
-
-article img {
-  max-width: 100%;
-  height: auto;
-  padding: 10px;
-  margin: 0px;
-}
-
 @media screen and (max-width: 650px) {
   html {
     font-size: 13px;
@@ -524,12 +370,6 @@ article img {
     font-size: 18px;
   }
 }
-/* @media (min-width: 400px){
-    article img{
-        max-width: 60%;
-        height: auto;
-    }
-} */
 @media (min-width: 600px) {
   #game {
     display: flex;
@@ -541,10 +381,6 @@ article img {
   #game #pc_article {
     margin-left: 8px;
   }
-  /* article img{
-      max-width: 45%;
-      height: auto;
-  } */
   .btn-menu {
     display: none;
   }
@@ -573,28 +409,6 @@ article img {
     grid-template-rows: auto auto;
     grid-gap: 8px 16px;
   }
-  /* 
-      .grid_2{
-          display: grid;
-
-          grid-template-columns: 1fr 1fr;
-          grid-template-rows: auto auto;
-          grid-gap: 32px 16px;
-
-
-      }
-
-      #art_1{
-         grid-area: 1/1/1/span 2;
-      }
-
-      #art_2{
-          grid-area: 2/1/2/1;
-      }
-
-      #art_3{
-          grid-area: 2/2/2/2;
-      } */
   .img_and_ul {
     display: grid;
     grid-template-columns: 4.5fr 1fr;

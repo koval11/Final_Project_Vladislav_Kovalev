@@ -48,8 +48,13 @@ const incrementer = 10;
 
 function playGame(){
 
+    
     roundNumber = 0;
     flagOne = false;
+
+
+    
+   
 
     popup.style.display = "block";
 
@@ -66,12 +71,6 @@ function playGame(){
     });
 
     
-
-    // submit.addEventListener("click", function(){
-    //     submit.preventDefault();
-    //     popup.style.display = "none";
-    // });
-
     form.addEventListener("submit", validateForm);
 
     function validateForm(event){
@@ -134,15 +133,6 @@ function playGame(){
     
     }
 
-    
-
-    
-
-   
-
-    
-    
-
 
     plOneRoundScore.innerHTML = `Round: `;
     plOneTotalScore.innerHTML = `Total: `;
@@ -163,15 +153,17 @@ function playGame(){
 }
 
 function startRound(){
-    console.log("In starround function");
 
-    roundNumber++;
+    
     player1.play();
     playerPC.play();
+
     let counter = 0;
     let countRolls = 1;
 
-    Animation = requestAnimationFrame(function(){TimeoutOne = setTimeout(diceRoll, 50)});
+    roundNumber++;
+
+    Animation = requestAnimationFrame(function(){TimeoutOne = setTimeout(diceRoll, 85)});
    
     function diceRoll(){
 
@@ -218,7 +210,7 @@ function startRound(){
     
         TimeoutOne = setTimeout(function(){
             Animation = requestAnimationFrame(diceRoll);
-        },50)
+        },85)
 
     }
 
@@ -397,13 +389,9 @@ function startRound(){
 
     TimeoutPop = setTimeout(function(){
 
-        
-        // popupTwo.style.opacity = 0;
         popupTwo.style.display = "block";
 
-       
-
-    }, 3000);
+    }, 2500);
 
     
 
@@ -479,7 +467,7 @@ function startRound(){
 
                 flagOne = true;
 
-            }, 1000);
+            }, 100);
 
 
         }

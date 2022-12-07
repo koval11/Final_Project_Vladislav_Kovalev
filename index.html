@@ -5,59 +5,67 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="css/style.css">
     <meta name="viewport" content="initial-scale=1.0, width=device-width">
-    <!-- <script src="scripts/menu.js" defer="defer"></script> -->
     <script src="scripts/project_objects.js" defer="defer"></script>
     <script src="scripts/project_functions.js" defer="defer"></script>
     <script src="scripts/project_code.js" defer="defer"></script>
     <script src="https://kit.fontawesome.com/460b85e37b.js" crossorigin="anonymous"></script>
 </head>
+
 <body id="body">
     <div id="wrapper">
         <header>
+
             <h1 id="header_h1">Final Project</h1>
+
             <div id="header_top">
                 
                 
             </div>
-
-            
-            <!-- <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="index.html">Fake 1</a></li>
-                    <li><a href="index.html">Fake 2</a></li>
-                    <li><a href="index.html">Fake 3</a></li>
-                    
-                </ul>
-            </nav> -->
             
         </header>
         
         <main>
+
             <section>
+
                 <h2 id="game_name">Dice of the Fates</h2>
+
                 <div id="game">
+
                     <article id="player_article">
+
                         <h3 id="player_h3">Player</h3>
+
                         <div class="dice_hand">
                             <img id="dice_one" src="images/dice/1.png" alt="dice_face">
                             <img id="dice_two" src="images/dice/1.png" alt="dice_face">
                         </div>
+
                         <p id="round_score_1">Round:</p>
+
                         <p id="total_score_1">Total:</p>
                         
                     </article>
+
                     <article id="pc_article">
+
                         <h3 id="ai_h3">AI</h3>
+                        
                         <div class="dice_hand">
                             <img id="dice_three" src="images/dice/1.png" alt="dice_face">
                             <img id="dice_four" src="images/dice/1.png" alt="dice_face">
                         </div>
+
                         <p id="round_score_2">Round:</p>
+
                         <p id="total_score_2">Total:</p>
+
                     </article>
+
                 </div>
+
                 <div id="btn_div">
+
                     <button id="btn_roll" disabled>Roll</button>
                     <button id="btn_new_game">New Game</button>
                     
@@ -71,7 +79,6 @@
                 
                     <form 	action="#" method="post" id="the_form">
             
-                
                     <fieldset>
                         
                         <label	for="name">Name:</label>
@@ -85,44 +92,41 @@
 
                         <legend><strong>Side </strong><span id="span_1">Jedi</span></legend>
 
+                        <input type="radio" id="jedi" name="side" value="jedi" checked ="checked">	
+                        <label for="jedi">Jedi</label>
                         
-                            <input type="radio" id="jedi" name="side" value="jedi" checked ="checked">	
-                            <label for="jedi">Jedi</label>
-                        
-                            <input type="radio" id="sith" name="side" value="sith">	
-                            <label for="sith">Sith</label>
-                        
-                                
-                                                        
+                        <input type="radio" id="sith" name="side" value="sith">	
+                        <label for="sith">Sith</label>
+                                              
                     </fieldset>
-
-                    <!-- <fieldset>
-                        <button id="fake_submit" >Input Name</button>
-                    </fieldset>     -->
                     
-                    <fieldset>
+                    <fieldset id="submit_fieldset">
                         <input type="submit" value="Play" id="submit">
                     </fieldset>
                 
                     </form>
 
-                    
-
                 </div>
                     
                
-            </section> 
+            </section>
+
             <section id='pop-up_2'>
                 
                 <div>
+
                     <button id="close-pop-up">&#x2715;</button>
+
                     <h2 id="round_h2"></h2>
+
                     <h2 id="round_h3"><span id="color1"></span> - <span id="color2"></span></h2>
-                    <img id="round_img" src="" alt="winner_gif">
+
+                    <img id="round_img" src="images/lose_win_round/unlimited_power.gif" alt="winner_gif">
+
                 </div>
                     
-               
             </section> 
+
         </main>
 
         <footer id="footer_id">
