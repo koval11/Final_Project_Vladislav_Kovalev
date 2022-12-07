@@ -33,6 +33,7 @@ class Player{
         }
         
         this.total += this.round;
+        // this.total = 10;
     }
 
     showDiceOne(){

@@ -27,7 +27,12 @@ const playerArticle = document.getElementById("player_article");
 const pcArticle = document.getElementById("pc_article");
 let spanColorOne = document.getElementById("color1");
 let spanColorTwo = document.getElementById("color2");
+let footeId = document.getElementById("footer_id");
 
+let Animation;
+let TimeoutOne;
+let TimeoutTwo;
+let flagOne = false;
 
 
 let roundNumber;
@@ -35,11 +40,16 @@ let player1;
 let playerPC;
 let side = "Jedi";
 let TimeoutPop;
+let TimeoutFinal;
 const interval = 10;
 const incrementer = 10;
 
 
+
 function playGame(){
+
+    roundNumber = 0;
+    flagOne = false;
 
     popup.style.display = "block";
 
@@ -89,8 +99,13 @@ function playGame(){
                 pcArticle.style.backgroundColor= "rgba(0, 0, 0, 0.4)";
                 pcArticle.style.color = "red";
                 pcArticle.style.border = "red solid 3px";
+                footeId.style.backgroundImage = "linear-gradient(to right, rgb(19, 71, 245), rgb(191, 3, 3))";
                 playerH3.innerHTML = `Jedi Knight ${userName.value}`;
                 aiH3.innerHTML = `Darth AI`;
+                diceOneImg.src = `images/dice/jedi/1.png`;
+                diceTwoImg.src = `images/dice/jedi/1.png`;
+                diceThreeImg.src = `images/dice/sith/1.png`;
+                diceFourImg.src = `images/dice/sith/1.png`;
                 player1 = new Player("Jedi Knight", userName.value);
                 playerPC = new Player("Darth", "AI");
         
@@ -103,8 +118,13 @@ function playGame(){
                 pcArticle.style.backgroundColor= "rgba(0, 0, 0, 0.4)";
                 pcArticle.style.color = "white";
                 pcArticle.style.border = "white solid 3px";
+                footeId.style.backgroundImage = "linear-gradient(to right, rgb(191, 3, 3), rgb(19, 71, 245))";
                 playerH3.innerHTML = `Darth ${userName.value}`;
                 aiH3.innerHTML = `Jedi Knight AI`;
+                diceOneImg.src = `images/dice/sith/1.png`;
+                diceTwoImg.src = `images/dice/sith/1.png`;
+                diceThreeImg.src = `images/dice/jedi/1.png`;
+                diceFourImg.src = `images/dice/jedi/1.png`;
                 player1 = new Player("Darth", userName.value);
                 playerPC = new Player("Jedi Knight", "AI");
             }
@@ -116,7 +136,7 @@ function playGame(){
 
     
 
-    roundNumber = 0;
+    
 
    
 
@@ -149,122 +169,228 @@ function startRound(){
     player1.play();
     playerPC.play();
     let counter = 0;
+    let countRolls = 1;
 
+    Animation = requestAnimationFrame(function(){TimeoutOne = setTimeout(diceRoll, 50)});
    
+    function diceRoll(){
 
-    plOneRoundScore.innerHTML = `Round: ${player1.showRound()}`;
-    plOneTotalScore.innerHTML = `Total: ${player1.showTotal()}`;
+        if(countRolls == 6){
 
-    plTwoRoundScore.innerHTML = `Round: ${playerPC.showRound()}`;
-    plTwoTotalScore.innerHTML = `Total: ${playerPC.showTotal()}`;
+            countRolls = 1;
 
-    if(player1.showSide() != "Darth"){
-        diceOneImg.src = `images/dice/jedi/${player1.showDiceOne()}.png`;
-        diceTwoImg.src = `images/dice/jedi/${player1.showDiceTwo()}.png`;
-        diceThreeImg.src = `images/dice/sith/${playerPC.showDiceOne()}.png`;
-        diceFourImg.src = `images/dice/sith/${playerPC.showDiceTwo()}.png`;
-    }else{
-        diceOneImg.src = `images/dice/sith/${player1.showDiceOne()}.png`;
-        diceTwoImg.src = `images/dice/sith/${player1.showDiceTwo()}.png`;
-        diceThreeImg.src = `images/dice/jedi/${playerPC.showDiceOne()}.png`;
-        diceFourImg.src = `images/dice/jedi/${playerPC.showDiceTwo()}.png`;
-    }
+            if(player1.showSide() != "Darth"){
+                
+                diceOneImg.src = `images/dice/jedi/${countRolls}.png`;
+                diceTwoImg.src = `images/dice/jedi/${countRolls}.png`;
+                diceThreeImg.src = `images/dice/sith/${countRolls}.png`;
+                diceFourImg.src = `images/dice/sith/${countRolls}.png`;
 
+            }else{
+
+                diceOneImg.src = `images/dice/sith/${countRolls}.png`;
+                diceTwoImg.src = `images/dice/sith/${countRolls}.png`;
+                diceThreeImg.src = `images/dice/jedi/${countRolls}.png`;
+                diceFourImg.src = `images/dice/jedi/${countRolls}.png`;
+
+            }
+
+        }else{
+
+            countRolls++;
+
+            if(player1.showSide() != "Darth"){
+                
+                diceOneImg.src = `images/dice/jedi/${countRolls}.png`;
+                diceTwoImg.src = `images/dice/jedi/${countRolls}.png`;
+                diceThreeImg.src = `images/dice/sith/${countRolls}.png`;
+                diceFourImg.src = `images/dice/sith/${countRolls}.png`;
+
+            }else{
+
+                diceOneImg.src = `images/dice/sith/${countRolls}.png`;
+                diceTwoImg.src = `images/dice/sith/${countRolls}.png`;
+                diceThreeImg.src = `images/dice/jedi/${countRolls}.png`;
+                diceFourImg.src = `images/dice/jedi/${countRolls}.png`;
+
+            }
+        }
     
+        TimeoutOne = setTimeout(function(){
+            Animation = requestAnimationFrame(diceRoll);
+        },50)
 
-    if(roundNumber == 1){
-        if(player1.showRound() > playerPC.showRound()){
-            roundH2.innerHTML = `${player1.showSide()} ${player1.showUserName()} won the first round!`;
-            spanColorOne.innerHTML = `${player1.showRound()}`;
-            spanColorTwo.innerHTML = `${playerPC.showRound()}`;
-
-            if(player1.showSide() == "Jedi Knight"){
-                roundImg.src = "images/lose_win_round/darth_maul_death.gif";
-                spanColorOne.style.color = "blue";
-                spanColorTwo.style.color = "red";
-            }else{
-                roundImg.src = "images/lose_win_round/qui_gon_death.gif";
-                spanColorOne.style.color = "red";
-                spanColorTwo.style.color = "blue";
-            }
-
-        }else{
-            roundH2.innerHTML = `${playerPC.showSide()} ${playerPC.showUserName()} won the first round!`;
-            spanColorOne.innerHTML = `${player1.showRound()}`;
-            spanColorTwo.innerHTML = `${playerPC.showRound()}`;
-            if(playerPC.showSide() == "Jedi Knight"){
-                roundImg.src = "images/lose_win_round/darth_maul_death.gif";
-                spanColorOne.style.color = "red";
-                spanColorTwo.style.color = "blue";
-            }else{
-                roundImg.src = "images/lose_win_round/qui_gon_death.gif";
-                spanColorOne.style.color = "blue";
-                spanColorTwo.style.color = "red";
-            }
-        }
-    }else if(roundNumber == 2){
-        if(player1.showRound() > playerPC.showRound()){
-            roundH2.innerHTML = `${player1.showSide()} ${player1.showUserName()} won the second round!`;
-            spanColorOne.innerHTML = `${player1.showRound()}`;
-            spanColorTwo.innerHTML = `${playerPC.showRound()}`;
-
-            if(player1.showSide() == "Jedi Knight"){
-                roundImg.src = "images/lose_win_round/Jango_Fett_death.gif";
-                spanColorOne.style.color = "blue";
-                spanColorTwo.style.color = "red";
-            }else{
-                roundImg.src = "images/lose_win_round/anakin_hand.gif";
-                spanColorOne.style.color = "red";
-                spanColorTwo.style.color = "blue";
-            }
-
-        }else{
-            roundH2.innerHTML = `${playerPC.showSide()} ${playerPC.showUserName()} won the second round!`;
-            spanColorOne.innerHTML = `${player1.showRound()}`;
-            spanColorTwo.innerHTML = `${playerPC.showRound()}`;
-
-            if(playerPC.showSide() == "Jedi Knight"){
-                roundImg.src = "images/lose_win_round/Jango_Fett_death.gif";
-                spanColorOne.style.color = "red";
-                spanColorTwo.style.color = "blue";
-            }else{
-                roundImg.src = "images/lose_win_round/anakin_hand.gif";
-                spanColorOne.style.color = "blue";
-                spanColorTwo.style.color = "red";
-            }
-        }
-    }else{
-        if(player1.showRound() > playerPC.showRound()){
-            roundH2.innerHTML = `${player1.showSide()} ${player1.showUserName()} won the third round!`;
-            spanColorOne.innerHTML = `${player1.showRound()}`;
-            spanColorTwo.innerHTML = `${playerPC.showRound()}`;
-
-            if(player1.showSide() == "Jedi Knight"){
-                roundImg.src = "images/lose_win_round/high_ground.gif";
-                spanColorOne.style.color = "blue";
-                spanColorTwo.style.color = "red";
-            }else{
-                roundImg.src = "images/lose_win_round/windu death.gif";
-                spanColorOne.style.color = "red";
-                spanColorTwo.style.color = "blue";
-            }
-
-        }else{
-            roundH2.innerHTML = `${playerPC.showSide()} ${playerPC.showUserName()} won the third round!`;
-            spanColorOne.innerHTML = `${player1.showRound()}`;
-            spanColorTwo.innerHTML = `${playerPC.showRound()}`;
-
-            if(playerPC.showSide() == "Jedi Knight"){
-                roundImg.src = "images/lose_win_round/high_ground.gif";
-                spanColorOne.style.color = "red";
-                spanColorTwo.style.color = "blue";
-            }else{
-                roundImg.src = "images/lose_win_round/windu death.gif";
-                spanColorOne.style.color = "blue";
-                spanColorTwo.style.color = "red";
-            }
-        }
     }
+
+    TimeoutTwo = setTimeout(function(){
+
+        clearTimeout(TimeoutOne);
+        cancelAnimationFrame(Animation);
+        
+
+        plOneRoundScore.innerHTML = `Round: ${player1.showRound()}`;
+        plOneTotalScore.innerHTML = `Total: ${player1.showTotal()}`;
+
+        plTwoRoundScore.innerHTML = `Round: ${playerPC.showRound()}`;
+        plTwoTotalScore.innerHTML = `Total: ${playerPC.showTotal()}`;
+
+        if(player1.showSide() != "Darth"){
+            diceOneImg.src = `images/dice/jedi/${player1.showDiceOne()}.png`;
+            diceTwoImg.src = `images/dice/jedi/${player1.showDiceTwo()}.png`;
+            diceThreeImg.src = `images/dice/sith/${playerPC.showDiceOne()}.png`;
+            diceFourImg.src = `images/dice/sith/${playerPC.showDiceTwo()}.png`;
+        }else{
+            diceOneImg.src = `images/dice/sith/${player1.showDiceOne()}.png`;
+            diceTwoImg.src = `images/dice/sith/${player1.showDiceTwo()}.png`;
+            diceThreeImg.src = `images/dice/jedi/${playerPC.showDiceOne()}.png`;
+            diceFourImg.src = `images/dice/jedi/${playerPC.showDiceTwo()}.png`;
+        }
+
+        
+
+        if(roundNumber == 1){
+            if(player1.showRound() > playerPC.showRound()){
+                roundH2.innerHTML = `${player1.showSide()} ${player1.showUserName()} wins round I`;
+                spanColorOne.innerHTML = `${player1.showRound()}`;
+                spanColorTwo.innerHTML = `${playerPC.showRound()}`;
+
+                if(player1.showSide() == "Jedi Knight"){
+                    roundImg.src = "images/lose_win_round/darth_maul_death.gif";
+                    spanColorOne.style.color = "blue";
+                    spanColorTwo.style.color = "red";
+                }else{
+                    roundImg.src = "images/lose_win_round/qui_gon_death.gif";
+                    spanColorOne.style.color = "red";
+                    spanColorTwo.style.color = "blue";
+                }
+
+            }else if(player1.showRound() < playerPC.showRound()){
+                roundH2.innerHTML = `${playerPC.showSide()} ${playerPC.showUserName()} wins round I`;
+                spanColorOne.innerHTML = `${player1.showRound()}`;
+                spanColorTwo.innerHTML = `${playerPC.showRound()}`;
+                if(playerPC.showSide() == "Jedi Knight"){
+                    roundImg.src = "images/lose_win_round/darth_maul_death.gif";
+                    spanColorOne.style.color = "red";
+                    spanColorTwo.style.color = "blue";
+                }else{
+                    roundImg.src = "images/lose_win_round/qui_gon_death.gif";
+                    spanColorOne.style.color = "blue";
+                    spanColorTwo.style.color = "red";
+                }
+            }else{
+                roundH2.innerHTML = `Draw`;
+                spanColorOne.innerHTML = `${player1.showRound()}`;
+                spanColorTwo.innerHTML = `${playerPC.showRound()}`;
+                if(playerPC.showSide() == "Jedi Knight"){
+                    roundImg.src = "images/lose_win_round/draw.gif";
+                    spanColorOne.style.color = "red";
+                    spanColorTwo.style.color = "blue";
+                }else{
+                    roundImg.src = "images/lose_win_round/draw.gif";
+                    spanColorOne.style.color = "blue";
+                    spanColorTwo.style.color = "red";
+                }
+            }
+        }else if(roundNumber == 2){
+            if(player1.showRound() > playerPC.showRound()){
+                roundH2.innerHTML = `${player1.showSide()} ${player1.showUserName()} wins round II`;
+                spanColorOne.innerHTML = `${player1.showRound()}`;
+                spanColorTwo.innerHTML = `${playerPC.showRound()}`;
+
+                if(player1.showSide() == "Jedi Knight"){
+                    roundImg.src = "images/lose_win_round/Jango_Fett_death.gif";
+                    spanColorOne.style.color = "blue";
+                    spanColorTwo.style.color = "red";
+                }else{
+                    roundImg.src = "images/lose_win_round/anakin_hand.gif";
+                    spanColorOne.style.color = "red";
+                    spanColorTwo.style.color = "blue";
+                }
+
+            }else if(player1.showRound() < playerPC.showRound()){
+                roundH2.innerHTML = `${playerPC.showSide()} ${playerPC.showUserName()} wins round II`;
+                spanColorOne.innerHTML = `${player1.showRound()}`;
+                spanColorTwo.innerHTML = `${playerPC.showRound()}`;
+
+                if(playerPC.showSide() == "Jedi Knight"){
+                    roundImg.src = "images/lose_win_round/Jango_Fett_death.gif";
+                    spanColorOne.style.color = "red";
+                    spanColorTwo.style.color = "blue";
+                }else{
+                    roundImg.src = "images/lose_win_round/anakin_hand.gif";
+                    spanColorOne.style.color = "blue";
+                    spanColorTwo.style.color = "red";
+                }
+            }else{
+                
+                    roundH2.innerHTML = `Draw`;
+                    spanColorOne.innerHTML = `${player1.showRound()}`;
+                    spanColorTwo.innerHTML = `${playerPC.showRound()}`;
+                    if(playerPC.showSide() == "Jedi Knight"){
+                        roundImg.src = "images/lose_win_round/draw.gif";
+                        spanColorOne.style.color = "red";
+                        spanColorTwo.style.color = "blue";
+                    }else{
+                        roundImg.src = "images/lose_win_round/draw.gif";
+                        spanColorOne.style.color = "blue";
+                        spanColorTwo.style.color = "red";
+                    }
+            }
+        }else{
+            if(player1.showRound() > playerPC.showRound()){
+                roundH2.innerHTML = `${player1.showSide()} ${player1.showUserName()} wins round III`;
+                spanColorOne.innerHTML = `${player1.showRound()}`;
+                spanColorTwo.innerHTML = `${playerPC.showRound()}`;
+
+                if(player1.showSide() == "Jedi Knight"){
+                    roundImg.src = "images/lose_win_round/star-wars-grievous.gif";
+                    spanColorOne.style.color = "blue";
+                    spanColorTwo.style.color = "red";
+                }else{
+                    roundImg.src = "images/lose_win_round/windu death.gif";
+                    spanColorOne.style.color = "red";
+                    spanColorTwo.style.color = "blue";
+                }
+
+            }else if(player1.showRound() < playerPC.showRound()){
+                roundH2.innerHTML = `${playerPC.showSide()} ${playerPC.showUserName()} wins round III`;
+                spanColorOne.innerHTML = `${player1.showRound()}`;
+                spanColorTwo.innerHTML = `${playerPC.showRound()}`;
+
+                if(playerPC.showSide() == "Jedi Knight"){
+                    roundImg.src = "images/lose_win_round/star-wars-grievous.gif";
+                    spanColorOne.style.color = "red";
+                    spanColorTwo.style.color = "blue";
+                }else{
+                    roundImg.src = "images/lose_win_round/windu death.gif";
+                    spanColorOne.style.color = "blue";
+                    spanColorTwo.style.color = "red";
+                }
+            }else{
+
+                roundH2.innerHTML = `Draw`;
+                spanColorOne.innerHTML = `${player1.showRound()}`;
+                spanColorTwo.innerHTML = `${playerPC.showRound()}`;
+                if(playerPC.showSide() == "Jedi Knight"){
+                    roundImg.src = "images/lose_win_round/draw.gif";
+                    spanColorOne.style.color = "red";
+                    spanColorTwo.style.color = "blue";
+                }else{
+                    roundImg.src = "images/lose_win_round/draw.gif";
+                    spanColorOne.style.color = "blue";
+                    spanColorTwo.style.color = "red";
+                }
+
+            }
+        }
+
+
+
+    }, 1500);
+
+
+
+
 
     btnNewGame.disabled = true;
     btnRoll.disabled = true;
@@ -277,7 +403,7 @@ function startRound(){
 
        
 
-    }, 2000);
+    }, 3000);
 
     
 
@@ -291,13 +417,74 @@ function startRound(){
             btnRoll.disabled = false;
         }
         
-    });
+    
 
     
       
-    if(roundNumber >= 3){
-        btnRoll.disabled = true;
-    }
+        if(roundNumber >= 3 && !flagOne){
+
+
+            btnRoll.disabled = true;
+
+
+            TimeoutFinal = setTimeout(function(){
+            
+                if(player1.showTotal() > playerPC.showTotal()){
+                    roundH2.innerHTML = `${player1.showSide()} ${player1.showUserName()} wins the game`;
+                    spanColorOne.innerHTML = `${player1.showTotal()}`;
+                    spanColorTwo.innerHTML = `${playerPC.showTotal()}`;
+
+                    if(player1.showSide() == "Jedi Knight"){
+                        roundImg.src = "images/lose_win_round/high_ground.gif";
+                        spanColorOne.style.color = "blue";
+                        spanColorTwo.style.color = "red";
+                    }else{
+                        roundImg.src = "images/lose_win_round/unlimited_power.gif";
+                        spanColorOne.style.color = "red";
+                        spanColorTwo.style.color = "blue";
+                    }
+
+                }else if(player1.showTotal() < playerPC.showTotal()){
+
+                    roundH2.innerHTML = `${playerPC.showSide()} ${playerPC.showUserName()} wins the game`;
+                    spanColorOne.innerHTML = `${player1.showTotal()}`;
+                    spanColorTwo.innerHTML = `${playerPC.showTotal()}`;
+
+                    if(playerPC.showSide() == "Jedi Knight"){
+                        roundImg.src = "images/lose_win_round/high_ground.gif";
+                        spanColorOne.style.color = "red";
+                        spanColorTwo.style.color = "blue";
+                    }else{
+                        roundImg.src = "images/lose_win_round/unlimited_power.gif";
+                        spanColorOne.style.color = "blue";
+                        spanColorTwo.style.color = "red";
+                    }
+
+                }else{
+                    roundH2.innerHTML = `Game Draw`;
+                    spanColorOne.innerHTML = `${player1.showTotal()}`;
+                    spanColorTwo.innerHTML = `${playerPC.showTotal()}`;
+                    if(playerPC.showSide() == "Jedi Knight"){
+                        roundImg.src = "images/lose_win_round/final_draw.gif";
+                        spanColorOne.style.color = "red";
+                        spanColorTwo.style.color = "blue";
+                    }else{
+                        roundImg.src = "images/lose_win_round/final_draw.gif";
+                        spanColorOne.style.color = "blue";
+                        spanColorTwo.style.color = "red";
+                    }
+                }
+
+                popupTwo.style.display = "block";
+
+                flagOne = true;
+
+            }, 1000);
+
+
+        }
+
+    });
 
 
 }
